@@ -2,8 +2,10 @@ var duration = document.getElementsByClassName("ytp-time-duration")[0] //get dur
 
 observer = new MutationObserver(function(mutationsList, observer) {
     var speed = document.getElementsByClassName("video-stream html5-main-video")[0].playbackRate
+    console.log(parseFloat(speed))
+
     var seconds = (hmsToSeconds(duration.innerHTML)) - (hmsToSeconds(current.innerHTML))
-    var newTime = addSeconds(seconds / parseInt(speed))
+    var newTime = addSeconds(Math.floor(seconds / parseFloat(speed)))
     tag.innerHTML = newTime.toLocaleTimeString()
 });
 
