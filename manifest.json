@@ -1,0 +1,12 @@
+{
+    "name": "Shorts Obliderator",
+    "description": "Disables anything on YT, that has to do with shorts",
+    "version": "1.0",
+    "manifest_version": 3,
+
+    "content_scripts": [{
+        "css": ["styles.css"],
+        "js": ["content.js"],
+        "matches": ["https://www.youtube.com/*"]
+      }]
+  }
