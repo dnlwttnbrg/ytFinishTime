@@ -1,8 +1,11 @@
 {
-    "name": "Shorts Obliderator",
-    "description": "Disables anything on YT, that has to do with shorts",
+    "name": "YouTube Finish Time",
+    "description": "Shows the Time the Video finishes in the VideoPlayer",
     "version": "1.0",
     "manifest_version": 3,
+    "icons": {  "16": "icons/wall-clock-128.png",
+                "48": "icons/wall-clock-64.png",
+                "128": "icons/wall-clock-16.png" },
 
     "content_scripts": [{
         "css": ["styles.css"],
@@ -10,3 +13,7 @@
         "matches": ["https://www.youtube.com/*"]
       }]
   }
+
+ 
+ 
+ 
