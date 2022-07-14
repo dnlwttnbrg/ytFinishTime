@@ -2,11 +2,15 @@ var duration = undefined
 var current = undefined
 var timeDisplay = undefined
 var tag = document.createElement("span")
+tag.style.marginLeft = "5px"
+tag.setAttribute("id", "finichedAtTime")
 
 var currentInterval = setInterval(function() {
     current = document.getElementsByClassName("ytp-time-current")[0] //get curent time of the video
     if(current != undefined){
-        console.log(current)
+        duration = document.getElementsByClassName("ytp-time-duration")[0] //get duration of the video
+        timeDisplay = document.getElementsByClassName("ytp-time-display")[0] //get time container to add new time to
+        timeDisplay.appendChild(tag)
         observer.observe(current, {characterData: false, childList: true, attributes: false});
         clearInterval(currentInterval)
     }
@@ -14,28 +18,14 @@ var currentInterval = setInterval(function() {
 
 //observes changes in current time
 observer = new MutationObserver(function(mutationsList, observer) {
-    if(duration != undefined){
-        current = document.getElementsByClassName("ytp-time-current")[0] //get curent time of the video
-        if(timeDisplay == undefined){
-            timeDisplay = document.getElementsByClassName("ytp-time-display")[0] //get time container to add new time to
+    current = document.getElementsByClassName("ytp-time-current")[0] //get curent time of the video
+    
+    var speed = document.getElementsByClassName("video-stream html5-main-video")[0].playbackRate
 
-            //create new span to hold time data
-            tag.style.marginLeft = "5px"
-            tag.setAttribute("id", "finichedAtTime")
-            timeDisplay.appendChild(tag)
-        }
-        var speed = document.getElementsByClassName("video-stream html5-main-video")[0].playbackRate
-        console.log(parseFloat(speed))
-
-        var seconds = (hmsToSeconds(duration.innerHTML)) - (hmsToSeconds(current.innerHTML))
-        var newTime = addSeconds(Math.floor(seconds / parseFloat(speed)))
-        tag.innerHTML = ("(" + newTime.toLocaleTimeString().substring(0,5) + ")")
-    }else{
-        duration = document.getElementsByClassName("ytp-time-duration")[0] //get duration of the video
-    }
+    var seconds = (hmsToSeconds(duration.innerHTML)) - (hmsToSeconds(current.innerHTML))
+    var newTime = addSeconds(Math.floor(seconds / parseFloat(speed)))
+    tag.innerHTML = ("(" + newTime.toLocaleTimeString().substring(0,5) + ")")
 });
-
-
 
 //Converts hh:mm:ss to seconds
 function hmsToSeconds(input){
