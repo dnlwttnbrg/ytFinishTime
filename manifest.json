@@ -3,6 +3,7 @@
     "description": "Shows the Time the Video finishes in the VideoPlayer",
     "version": "1.0",
     "manifest_version": 3,
+    "author": "Daniel Wittenburg",
     "icons": {  "16": "icons/wall-clock-128.png",
                 "48": "icons/wall-clock-64.png",
                 "128": "icons/wall-clock-16.png" },
@@ -11,7 +12,12 @@
         "css": ["styles.css"],
         "js": ["content.js"],
         "matches": ["https://www.youtube.com/*"]
-      }]
+      }],
+    "action":{
+        "default_popup": "index.html",
+        "default_title": "Credit"
+    }
+
   }
 
  
