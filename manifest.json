@@ -1,7 +1,7 @@
 {
     "name": "YouTube Finish Time",
     "description": "Shows the Time the Video finishes in the VideoPlayer",
-    "version": "1.0",
+    "version": "1.1",
     "manifest_version": 3,
     "author": "Daniel Wittenburg",
     "icons": {  "16": "icons/wall-clock-128.png",
